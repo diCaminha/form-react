@@ -5,12 +5,15 @@ function CadastroFormulario() {
   
     let [nome, setNome] = useState("");
     let [sobrenome, setSobrenome] = useState("");
+    let [cpf, setCpf] = useState("");
+    let [novidades, setNovidades] = useState(false);
+    let [promocoes, setPromocoes] = useState(false);
 
     return (
     <form
         onSubmit={(event) => {
             event.preventDefault();
-            console.log(nome, sobrenome);
+            console.log(nome, sobrenome, cpf, novidades, promocoes);
         }}>
 
       <TextField
@@ -37,18 +40,25 @@ function CadastroFormulario() {
         margin="normal" 
         fullWidth />
       
-      <TextField 
+      <TextField
+        value={cpf}
+        onChange={(event) => {
+            setCpf(event.target.value);
+        }}
         id="cpf" 
         label="CPF" 
         margin="normal" 
         fullWidth />
+
       <FormControlLabel
         label="Novidades"
-        control={<Switch name="novidades" defaultChecked />}
+        onChange={(event) => setNovidades(event.target.checked)}
+        control={<Switch name="novidades" defaultChecked={novidades} />}
       />
       <FormControlLabel
         label="Promoções"
-        control={<Switch name="promocoes" defaultChecked />}
+        onChange={(event) => setPromocoes(event.target.checked)}
+        control={<Switch name="promocoes" defaultChecked={promocoes} />}
       />
       <Button type="submit">Cadastrar</Button>
     </form>
