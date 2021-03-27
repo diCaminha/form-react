@@ -6,9 +6,13 @@ function App() {
   return (
     <Container maxWidth="sm">
       <h1>formulario de cadastro</h1>   
-      <CadastroFormulario/>
+      <CadastroFormulario aoEnviar={aoEnviarForm}/>
     </Container>
   );
+}
+
+function aoEnviarForm(dadosForm) {
+  console.log(dadosForm);
 }
 
 export default App;
