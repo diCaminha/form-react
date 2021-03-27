@@ -4,28 +4,34 @@ import { React, useState } from "react";
 function CadastroFormulario() {
   
     let [nome, setNome] = useState("");
+    let [sobrenome, setSobrenome] = useState("");
 
     return (
     <form
         onSubmit={(event) => {
             event.preventDefault();
-            console.log(nome);
+            console.log(nome, sobrenome);
         }}>
 
       <TextField
         value={nome}
         onChange={(event) => {
-            setNome(event.target.value)
-            if(nome.length >= 3){
-                setNome(nome.substr(0,3));
+            let nomeTmp = event.target.value;
+            if(nomeTmp.length >= 3){
+                nomeTmp = nomeTmp.substr(0,3);
             }
+            setNome(nomeTmp);
         }}
         id="nome" 
         label="Nome" 
         margin="normal" 
         fullWidth />
       
-      <TextField 
+      <TextField
+        value={sobrenome}
+        onChange={(event) => {
+            setSobrenome(event.target.value);
+        }}
         id="sobrenome" 
         label="Sobrenome" 
         margin="normal" 
